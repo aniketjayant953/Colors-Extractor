@@ -1,5 +1,5 @@
 import streamlit as st
-import matplotlib
+import matplotlib.image as img
 from PIL import Image
 from sklearn.cluster import KMeans
 from PIL import Image, ImageDraw
@@ -32,7 +32,7 @@ else:
     if uploaded_file is not None:
         image = Image.open(uploaded_file)
         st.image(image, caption="Uploaded Image", use_column_width=True)
-        image = matplotlib.image.imread(uploaded_file)
+        image = img.imread(uploaded_file)
         X = image.reshape(-1, 3)
         kmeans = KMeans(n_clusters=int(dominant_colors))
         kmeans.fit(X)
